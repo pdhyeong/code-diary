@@ -1,2 +1,2 @@
 # code-diary
-my code diary
+정리해서 올리는 습관 들이기 프로젝트 조금씩 변해가봅시당
