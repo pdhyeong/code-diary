@@ -32,3 +32,4 @@ https://namu.wiki/w/%EA%B7%B8%EB%A6%AC%EB%94%94%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC
 
 ## 실제 적용 문제 예시
 
+![ex_screenshot](./img/Coin.png)
