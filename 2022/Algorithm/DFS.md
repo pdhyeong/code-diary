@@ -17,7 +17,7 @@ DFS란 깊이 우선 탐색이라고도 부르며, 그래프에서 깊은 부분
 
 ## DFS의 표현방법
 인접행렬의 표현:<br>
-![ex_screenshot](./img/adjArray.png)
+![ex_screenshot](./img/Adjarray.png)
 <br>
   인접행렬의 시간복잡도 와 공간복잡도 장단점<br>
 
@@ -25,7 +25,7 @@ DFS란 깊이 우선 탐색이라고도 부르며, 그래프에서 깊은 부분
     
     단점 : 노드가 많고 간선이 적을때 비효율적이고 시간복잡도를 O(n^2) 메모리를 차지.
 인접리스트의 표현:<br>
-![ex_screenshot](./img/adlist.png)
+![ex_screenshot](./img/Adjlist.png)
 <br>
   인접리스트의 시간복잡도 와 공간복잡도 장단점<br>
 
@@ -41,5 +41,16 @@ DFS란 깊이 우선 탐색이라고도 부르며, 그래프에서 깊은 부분
 4. 대신 BFS보다 느리다.
 
 
+
+<br>
+
+## 실제 적용 문제 예시
+
+![ex_screenshot](./img/DFS.png)
+
+
+## 문제 풀이
+
+
 사진자료 : https://thebook.io/006952/ch02/02-07/ , https://velog.io/@uchang903/%EC%9D%B4%EC%82%B0%EC%88%98%ED%95%99-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%91%9C%ED%98%84-%EB%B0%A9%EB%B2%95-Representing-Graph-%EC%9D%B8%EC%A0%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8Adjacency-Lists-%EC%9D%B8%EC%A0%91-%ED%96%89%EB%A0%ACAdjacency-Matrices-%EA%B7%BC%EC%A0%91-%ED%96%89%EB%A0%ACIncidence-Matrices
-,https://velog.io/@deannn/CS-%EA%B8%B0%EC%B4%88-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-Graph
+,https://velog.io/@deannn/CS-%EA%B8%B0%EC%B4%88-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-Graph,https://www.acmicpc.net/problem/1260
