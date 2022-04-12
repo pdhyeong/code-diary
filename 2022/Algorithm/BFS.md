@@ -29,7 +29,7 @@ BFS의 특징은 다음과 같다.
 
 ### 실제 적용 문제 예시
 
-![ex_screenshot](./img/BFS Pro.png)
+![ex_screenshot](./img/BFS2178.png)
 
 
 ### 문제풀이
