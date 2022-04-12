@@ -26,4 +26,13 @@ BFS의 특징은 다음과 같다.
 
 <br>
 
+
+### 실제 적용 문제 예시
+
+![ex_screenshot](./img/BFS Pro.png)
+
+
+### 문제풀이
+
+
 참고 자료 : https://gmlwjd9405.github.io/2018/08/15/algorithm-bfs.html
