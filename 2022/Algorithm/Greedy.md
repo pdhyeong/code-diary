@@ -77,4 +77,8 @@ for i in change:
     coin %= i # 남은돈 갱신
 print(count)
 ```
+## 이코테
+
+### 상하좌우
+
 
