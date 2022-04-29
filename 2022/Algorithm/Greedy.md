@@ -117,19 +117,28 @@ n = int(input())
 x,y = 1, 1
 plans = input().split()
 
+# 좌표기준으로 추가 되는값
 dx = [0,0,-1,1]
 dy = [-1,1,0,0]
 
+# 읽어드릴 리스트
 move_types = ['L','R','U','D']
 
-for plan in plans:
-    for i in range(len(move_types)):
-        if plan == move_types[i]:
-            nx = x + dx[i]
+
+
+for plan in plans: # 문자 하나를 비교
+    for i in range(len(move_types)): 
+        if plan == move_types[i]:# move_types안에서의 문자열과 같은거를
+            nx = x + dx[i] # 좌표 기준으로 더해준다
             ny = y + dy[i]
-    if nx < 1 or ny 1 or nx > n or ny > n:
-        continue
-    x , y = nx, ny
+    if nx < 1 or ny 1 or nx > n or ny > n: # 범위를 넘어가는것들은 예외 처리
+        continue 
+    x , y = nx, ny 
     
-print(x,y)
+print(x,y) # 출력
+
 ```
+
+기존의 행렬(Matrix)과 같은 풀이를 생각하여 비슷한 풀이법을 생각했지만 x와 y좌표를 따로 더하는 부분에서 오류가 나아 제 시간에 풀지못했다
+
+책에서는 nx와 ,ny로 따로 변수를 만들어서 대입하는 것을 보고 대단하다고 생각했당.....
