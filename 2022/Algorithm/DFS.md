@@ -50,7 +50,31 @@ DFS란 깊이 우선 탐색이라고도 부르며, 그래프에서 깊은 부분
 
 
 ## 문제 풀이
+```py
+# DFS
 
+x,y,z = map(int,input().split()) # 입력 받기
+graph=[[] for _ in range(y+1)]
+visited = [False] * (y+1) # 방문된 정보
+
+for i in range(y): 
+    n , m = map(int,input().split())
+    graph[n].append(m) # n의 노드와
+    graph[m].append(n) # m 의 노드 이어주기
+    
+for i in range(len(graph)):
+    graph[i].sort() # 작은 노드부터 방문하기 위해 정렬
+
+
+def dfs(z) :
+    print(z,end=" ") # 방문 노드 출력
+    visited[z] = True # 방문 노드 방문처리
+    for i in graph[z]: # z의 노드중 
+        if not visited[i]: # 방문하지 않았다면
+            dfs(i) # 재귀함수로 방문 // 스택형식
+            visited[i] = True # 방문하고 방문처리
+dfs(z)
+```
 
 사진자료 : https://thebook.io/006952/ch02/02-07/ , https://velog.io/@uchang903/%EC%9D%B4%EC%82%B0%EC%88%98%ED%95%99-%EA%B7%B8%EB%9E%98%ED%94%84-%ED%91%9C%ED%98%84-%EB%B0%A9%EB%B2%95-Representing-Graph-%EC%9D%B8%EC%A0%91-%EB%A6%AC%EC%8A%A4%ED%8A%B8Adjacency-Lists-%EC%9D%B8%EC%A0%91-%ED%96%89%EB%A0%ACAdjacency-Matrices-%EA%B7%BC%EC%A0%91-%ED%96%89%EB%A0%ACIncidence-Matrices
 ,https://velog.io/@deannn/CS-%EA%B8%B0%EC%B4%88-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-Graph,https://www.acmicpc.net/problem/1260
