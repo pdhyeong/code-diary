@@ -22,57 +22,47 @@ BFS의 특징은 다음과 같다.
 
 탐색 과정은 다음과 같다.
 
-![ex_screenshot](./img/BFS.png)
+![image](https://user-images.githubusercontent.com/71219602/168030043-3b9e1c80-fa53-4cb4-9021-f0cf699ac21d.png)
+
 
 <br>
 
 
 ### 실제 적용 문제 예시
 
-![ex_screenshot](./img/BFS2178.png)
+![image](https://user-images.githubusercontent.com/71219602/168030198-57e0f3d8-3b68-4c5d-b0cc-b53b5eba2e1f.png)
+
 
 
 ### 문제풀이
 ```py
-import sys
+# 미로 탐색
 from collections import deque
-input=sys.stdin.readline
+dx = [0,0,-1,1] #상하좌우 설정
+dy = [1,-1,0,0]
 
-n,m,start=map(int,input().split())
-visited=[False]*(n+1)
+graph = [] # 빈 그래프
 
-graph=[[] for _ in range(n+1)]
+n,m = map(int,input().split())
+for i in range(n): # 열 횟수 (반복)
+    graph.append(list(map(int,input()))) # 이렇게 선언하면 공백없이 들어간다.
 
-
-for _ in range(m):
-    a,b=map(int,input().split())
-    graph[a].append(b)
-    graph[b].append(a)
-
-for i in range(len(graph)):
-    graph[i].sort()
-
-def dfs(start):
-    print(start,end=' ')
-    visited[start]=True
-    for i in graph[start]:
-        if not visited[i]:
-            dfs(i)
-            visited[i]=True
-
-def bfs(start):
-    q=deque([start])
-    visited[start]=True
-    while q:
-        now=q.popleft()
-        print(now,end=' ')
-        for i in graph[now]:
-            if not visited[i]:
-                q.append(i)
-                visited[i]=True
-dfs(start)
-visited=[False]*(n+1)
-print()
-bfs(start)
+def bfs(x,y):
+    queue = deque() # 큐생성
+    queue.append((x,y)) #큐 안에 x,y 값(즉 먼저 확인하는 값)
+    while queue: # 큐가 비어있을때 까지
+        x,y = queue.popleft() # 두개의 값을 뺀다
+        for i in range(4):# 상하좌우 확인
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if nx < 0 or ny < 0 or nx >= n or ny >= m:
+                continue
+            if graph[nx][ny] == 0: # 미로의 벽 (0) 에 부딪히면 다시 
+                continue
+            if graph[nx][ny] == 1: # 만약 1에 걸리면 그쪽으로 간다
+                graph[nx][ny] = graph[x][y] + 1 # 총 가는 비용을 구하기 위해 비용 축적
+                queue.append((nx,ny)) # 큐에 삽입하고 다시 반복문으로 간다.
+    return graph[n-1][m-1] # 축적되어서 온 값 맨 오른쪽 아래 
+print(bfs(0,0)) # 시작지점은 (0,0)
 ```
 참고 자료 : https://gmlwjd9405.github.io/2018/08/15/algorithm-bfs.html
