@@ -11,7 +11,8 @@ DFS란 깊이 우선 탐색이라고도 부르며, 그래프에서 깊은 부분
 
 그래프란 노드와 노드를 연결하는 간선으로 하나로 모아 놓은 자료구조로
 
-![ex_screenshot](./img/Graph.png)
+![image](https://user-images.githubusercontent.com/71219602/168556690-115787a5-756b-4412-894d-17f2775e8c4d.png)
+
 
 이와 같이 표현할 수 있다.
 
