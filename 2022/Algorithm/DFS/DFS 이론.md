@@ -17,15 +17,18 @@ DFS란 깊이 우선 탐색이라고도 부르며, 그래프에서 깊은 부분
 
 ## DFS의 표현방법
 인접행렬의 표현:<br>
-![ex_screenshot](./img/Adjarray.png)
+![image](https://user-images.githubusercontent.com/71219602/168556072-ebf247e5-9d4c-460d-8fe0-68928e9a5c0f.png)
 <br>
   인접행렬의 시간복잡도 와 공간복잡도 장단점<br>
 
     장점 : 비교적 리스트보다 구현이 간단하고 연결을 확인하는 시간복잡도가 O(1) 이다.
     
     단점 : 노드가 많고 간선이 적을때 비효율적이고 시간복잡도를 O(n^2) 메모리를 차지.
-인접리스트의 표현:<br>
-![ex_screenshot](./img/Adjlist.png)
+인접리스트의 표현:
+<br>
+
+![image](https://user-images.githubusercontent.com/71219602/168556371-6379eba4-a88a-4eb1-a6b0-12ddd59573f9.png)
+
 <br>
   인접리스트의 시간복잡도 와 공간복잡도 장단점<br>
 
@@ -46,7 +49,8 @@ DFS란 깊이 우선 탐색이라고도 부르며, 그래프에서 깊은 부분
 
 ## 실제 적용 문제 예시
 
-![ex_screenshot](./img/DFS.png)
+
+![image](https://user-images.githubusercontent.com/71219602/168556509-bedb18b7-f594-4c75-bbf5-7a577a09b6e7.png)
 
 
 ## 문제 풀이
