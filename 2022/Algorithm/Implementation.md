@@ -1,0 +1,94 @@
+## 이코테
+풀기어려워서 못풀었던 구현 문제들을 설명을 보고 이해한 문제여서 부족함을 많이느꼈다.
+### 상하좌우
+
+여행가 A는 N*M 크기의 정사각형 공간 위에 서있다. 이 공간은 1*1 크기의 정사각형으로 나누어져 있다.
+
+가장 왼쪽위 좌표는 (1,1)이며 가장 오른쪽 아래 좌표는 (N,N)에 해당한다.
+
+여행가 A는 상,하 좌,우 방향으로 이동할 수 있으며, 시작 좌표는 항상 (1,1)이다. 우리 앞에는 여행가 A가 이동할 계획이 적힌 계획서가 놓여있다.
+
+L : 왼쪽으로 한 칸 이동
+R: 오른쪽으로 한 칸 이동
+U: 위로 한 칸 이동
+D: 아래로 한칸이동
+
+이때 여행가 A가 N × N 크기의 정사각형 공간을 벗어나는 움직임은 무시된다
+
+예를 들어 (1, 1)의 위치에서 L 혹은 U를 만나면 무시된다
+
+다음은 N = 5인 지도와 계획이다.
+
+![image](https://user-images.githubusercontent.com/71219602/168518190-8e1a5bb4-75ec-4cd1-89d0-ca7970949323.png)
+
+
+### 입력
+
+* 첫째 줄에 공간의 크기를 나타내는 N이 주어집니다. (1<=N<=100)
+
+* 둘째 줄에 여행가 A가 이동할 계획서 내용이 주어집니다. (1<=이동 횟수<=100)
+
+### 출력
+첫째 줄에 게임의 룰에 맞게 선택한 카드에 적힌 숫자를 출력
+
+### 입력 예시
+5
+R R R U D D
+
+### 출력 예시
+3 4
+
+
+### CODE
+```C++
+#include <string>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std; 
+int main()
+{
+    int dx[4] = { 0,0,-1,1 };
+    int dy[4] = { -1,1,0,0 };
+    char work[4] = { 'L','R','U','D' };
+
+    int n;
+    string start;
+    cin >> n;
+    cin.ignore();
+    getline(cin, start);
+    int x=1, y =1;
+
+    for (int i = 0; i < start.size(); i++)
+    {
+        char get = start[i];
+        int nx = 0, ny = 0;
+        for (int j = 0; j < 4; j++)
+        {
+            if (get == work[j]) {
+                nx = x + dx[j];
+                ny = y + dy[j];
+            }
+        }
+        if (nx < 1 || ny < 1 || nx > n || ny > n)
+            continue;
+        x = nx;
+        y = ny;
+    }
+    cout << x << ' ' << y << endl;
+    return 0;
+}
+```
+### 후기
+
+상하좌우를 좌표기준으로 나눠 푸는 것에 대한 풀이법에 근접했으나 for문 안
+
+```C++
+if (get == work[j]) {
+                nx = x + dx[j];
+                ny = y + dy[j];
+                }
+x = nx;
+y = ny;
+```
+이 부분을 생각을 못해서 무릎을 탁치면서 이해를 했다. 으아 아직 너무 부족한거 같아 걱정이다.
