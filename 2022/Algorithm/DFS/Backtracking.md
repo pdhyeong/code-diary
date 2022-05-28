@@ -40,26 +40,26 @@
 using namespace std;
 
 int n,m;
-int arr[MAX] = {0,};
-bool visited[MAX] = {0,};
+int arr[MAX] = {0,}; // 나열할 수열
+bool visited[MAX] = {0,}; // 수열의 방문확인을 위한 배열
 
-void dfs(int cnt)
+void dfs(int cnt) 
 {
-    if(cnt == m)
+    if(cnt == m) // m개를 택했으면
     {
         for(int i = 0; i < m; i++)
-            cout << arr[i] << ' ';
-        cout << '\n';
+            cout << arr[i] << ' '; // 기록해둔 값들 출력
+        cout << '\n'; 
         return;
     }
-    for(int i = 1; i <= n; i++)
+    for(int i = 1; i <= n; i++) // n까지의 수에 대해
     {
-        if(!visited[i])
+        if(!visited[i]) // 방문하지 않았다면 
         {
-            visited[i] = true;
-            arr[cnt] = i;
-            dfs(cnt+1);
-            visited[i] = false;
+            visited[i] = true; // 방문처리
+            arr[cnt] = i; 
+            dfs(cnt+1); // 다음 경우의 수 확인
+            visited[i] = false; // dfs(cnt+1)로 경우의 수를 확인했으니 취소 처리
         }
     }
 }
@@ -74,5 +74,7 @@ int main() {
 ### 후기
 
 전형적인 모든 경로를 탐색하는 백트래킹 방법을 사용하는 것이어서 DFS를 사용하겠다는것만 알았다면 크게 어렵지않게 풀수 있었다.
+
+조합의 개수를 구하는 문제이므로 확인해두면 좋다.
 
 백트래킹 내용 : https://chanhuiseok.github.io/posts/algo-23/
