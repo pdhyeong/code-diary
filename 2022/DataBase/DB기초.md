@@ -3,7 +3,7 @@
 
 ### DML
 
-DML은 Data manipulation으 Language로 말그대로 데이터 조작어 이다.
+DML은 Data manipulation Language로 말그대로 데이터 조작어 이다.
 
 정의되어 있는 데이터를 선택, 삽입,수정,삭제를 할때 사용한다.
 
