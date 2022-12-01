@@ -15,7 +15,7 @@ contract RPS {
     struct Player {
         address payable addr;
         uint256 playerBetAmount;
-        Hand hand;
+        uint256 determine;
         PlayerStatus playerStatus;
     }
     struct Game {
@@ -23,9 +23,11 @@ contract RPS {
         Player taker;
         uint256 betAmount;
         GameStatus gameStatus;
+        uint count;
     }
     mapping (uint => Game) rooms;
     uint roomLen = 0;
+    uint count = 0;
 
     enum GameStatus {
         STATUS_NOT_STARTED, STATUS_STARTED, STATUS_COMPLETE, STATUS_ERROR
@@ -39,47 +41,40 @@ contract RPS {
         require(sender == rooms[roomNum].originator.addr || sender == rooms[roomNum].taker.addr);
         _;
     }
-    function createRoom(Hand _hand) public payable isValidHand(_hand) returns(uint roomNum) {
+    function createRoom(uint _determine) public payable  returns(uint roomNum) {
         rooms[roomLen] = Game({
             betAmount: msg.value,
             gameStatus: GameStatus.STATUS_NOT_STARTED,
             originator: Player({
-                hand: _hand,
+                determine: _determine,
                 addr: payable(msg.sender),
                 playerStatus: PlayerStatus.STATUS_PENDING,
-                playerBetAmount: msg.value 
+                playerBetAmount: msg.value
             }),
             taker: Player({
-                hand: Hand.rock,
+                determine: _determine,
                 addr: payable(msg.sender),
                 playerStatus: PlayerStatus.STATUS_PENDING,
                 playerBetAmount: 0
-            })
+            }),
+            count: 2
         });
         roomNum = roomLen;
         roomLen += 1;
     }
-    function joinRoom(uint roomNum,Hand _hand) public payable isValidHand(_hand) {
+    function joinRoom(uint roomNum,uint _determine) public payable  {
         rooms[roomNum].taker = Player({
-            hand: _hand,
+            determine: _determine,
             addr: payable(msg.sender),
             playerStatus: PlayerStatus.STATUS_PENDING,
             playerBetAmount: msg.value
         });
         rooms[roomNum].betAmount += msg.value;
         compareHands(roomNum);
+        rooms[roomNum].count += 1;
     }
     function checkTotalPay(uint roomNum) public view returns(uint roomNumPay) {
         return rooms[roomNum].betAmount;
-    }
-    function maxPayroom() public view returns(uint){
-        uint max = 0;
-        for(uint i = 0;i<roomLen;i++){
-            if(rooms[i].gameStatus == GameStatus.STATUS_NOT_STARTED && max < rooms[i].betAmount) {
-                max = i;
-            }
-        }
-        return max;
     }
     function payout(uint roomNum) public payable isPlayer(roomNum,msg.sender) {
         if(rooms[roomNum].originator.playerStatus == PlayerStatus.STATUS_TIE && rooms[roomNum].taker.playerStatus == PlayerStatus.STATUS_TIE) {
@@ -100,9 +95,20 @@ contract RPS {
         }
         rooms[roomNum].gameStatus = GameStatus.STATUS_COMPLETE;
     }
+    function maxCheckroom () public view returns(uint) {
+        uint max = 0;
+        uint idx = 0;
+        for(uint i = 0;i<roomLen;i++){
+            if(max < rooms[i].betAmount){
+                max = rooms[i].betAmount;
+                idx = i;
+            }
+        }
+        return idx;
+    }
     function compareHands(uint roomNum) private {
-        uint8 originator = uint8(uint256(keccak256(abi.encodePacked(block.timestamp,block.difficulty,msg.sender))) + rooms[roomNum].originator;
-        uint8 taker = uint8(uint256(rooms[roomNum].taker.hand));
+        uint8 originator = uint8(uint256(keccak256(abi.encodePacked(block.timestamp,block.difficulty,msg.sender))) + rooms[roomNum].originator.determine) % 3;
+        uint8 taker = uint8(uint256(keccak256(abi.encodePacked(block.timestamp,block.difficulty,msg.sender))) + rooms[roomNum].taker.determine) % 3;
 
         rooms[roomNum].gameStatus = GameStatus.STATUS_STARTED;
 
@@ -121,5 +127,8 @@ contract RPS {
         else {
             rooms[roomNum].gameStatus = GameStatus.STATUS_ERROR;
         }
+    }
+    function countper (uint roomidx) public view returns(uint){
+        return rooms[roomidx].count;
     }
 }
