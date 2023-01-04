@@ -23,7 +23,7 @@ EIP-1139를 통해, 메타마스크와 같은 지갑 소프트웨어는 웹 페�
 ### express 사용한 EtherScan 테스트넷 정보확인하기
 ```JS
 const Web3 = require('web3');
-const rpcURL = "https://goerli.infura.io/v3/465c2b1ff006427f9514dd5e214e44f9"
+const rpcURL = "https://goerli.infura.io/v3/'password'"
 
 const web3 = new Web3(rpcURL);
 
