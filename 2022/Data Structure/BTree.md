@@ -36,17 +36,17 @@ typedef int BTData;
 
 typedef struct _bTreeNode 
 {
-BTData data;
-struct _bTreeNode * left;
-struct _bTreeNode * right;
+  BTData data;
+  struct _bTreeNode * left;
+  struct _bTreeNode * right;
 } BTreeNode;
 
 // 노드 생성
 BTreeNode * MakeBTreeNode(void) {
-BTreeNode * nd = (BTreeNode *)malloc(sizeof(BTreeNode));
-nd -> left = NULL;
-nd -> right = NULL;
-return nd;
+  BTreeNode * nd = (BTreeNode *)malloc(sizeof(BTreeNode));
+  nd -> left = NULL;
+  nd -> right = NULL;
+  return nd;
 }
 
 // 데이터 값 반환
