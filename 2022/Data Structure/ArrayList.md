@@ -99,7 +99,7 @@ int main() {
 
   if(LFirst(&list,&data))
   {
-    if(data == )
+    if(data == 294)
       LRemove(&list);
     
     while(LNext(&list, &data)) 
