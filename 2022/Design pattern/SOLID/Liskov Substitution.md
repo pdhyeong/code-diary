@@ -50,7 +50,7 @@ class BlackCat(Cat):
 def speak(cat:Cat):
   cat.speak()
 
-cat = Cat()
+cat = BlackCat()
 speak(cat) # black cat
 ```
 
@@ -71,7 +71,7 @@ def speak(cat:Cat):
 cat = Cat()
 speak(cat) #meow
 
-cat = Cat()
+cat = BlackCat()
 speak(cat) # black cat
 
 class Fish(Cat):
